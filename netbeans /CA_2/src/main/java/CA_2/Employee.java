@@ -20,14 +20,12 @@ package CA_2;
 //- position : String
 //- jobTitle : String
 //- company : String
-//- managerType : String
 
 //+ getEmployeeId() : int
 //+ getFirstName() : String
 //+ getLastName() : String
 //+ getFullName() : String
 //+ getDepartment() : String
-//+ getManagerType() : String
 //+ getJobTitle() : String
 //+ toString() : String
 
@@ -46,7 +44,6 @@ public class Employee {
     private String position;
     private String jobTitle;
     private String company;
-    private String managerType;
     
     
 }
