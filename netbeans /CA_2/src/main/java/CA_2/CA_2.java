@@ -48,42 +48,81 @@ public class CA_2 {
             // Ask for user input
             System.out.print("Select an option: ");
             choice = input.nextInt();
+            
+            MenuOption selectedOption = null; //This variable will store the menu option selected by the user, as brief 
+            
+            
+            //At first, the menu was only using numbers like 1, 2 or 3 to control the options. 
+            //After creating the MenuOption enum, I connected the numbers to named options such as READ_FILE, SORT and SEARCH.
+
+            //This makes the code more organised and easier to understand 
+            //because the program is no longer working only with random numbers. 
+            //It is also easier to maintain later if more menu options are added.
 
             // The switch its to checks which option the user selected
             switch (choice) {
 
                 case 1: //If the user choose 1, the program will later read the employee file
-                    System.out.println("READ FILE selected.");
+                    selectedOption = MenuOption.READ_FILE;
                     break;
 
                 case 2: //same here 
-                    System.out.println("SORT selected.");
+                    selectedOption = MenuOption.SORT;
                     break;
 
                 case 3: //same here 
-                    System.out.println("SEARCH selected.");
+                    selectedOption = MenuOption.SEARCH;
                     break;
 
                 case 4://same here 
-                    System.out.println("ADD RECORD selected.");
+                    selectedOption = MenuOption.ADD_RECORD;
                     break;
 
                 case 5: //same here
-                    System.out.println("CREATE BINARY TREE selected.");
+                    selectedOption = MenuOption.CREATE_BINARY_TREE;
                     break;
 
                 case 6: //same here
-                    System.out.println("Exiting system...");
+                    selectedOption = MenuOption.EXIT;
                     break;
-
+            
+        
                 default: //if the user types any number outside 1-6, this message is displayed
                     System.out.println("Invalid option. Please try again.");
             }
 
-        } while (choice != 6); // The loop continues while the user has not selected option 6
+                // This switch uses the enum option to decide what the program should do
+                if (selectedOption != null) {
+                 switch (selectedOption) {
+       
+                     case READ_FILE:
+            System.out.println("READ FILE selected.");
+            break;
 
-        // here is to closing the Scanner after the loop ends
-        input.close();
+        case SORT:
+            System.out.println("SORT selected.");
+            break;
+
+        case SEARCH:
+            System.out.println("SEARCH selected.");
+            break;
+
+        case ADD_RECORD:
+            System.out.println("ADD RECORD selected.");
+            break;
+
+        case CREATE_BINARY_TREE:
+            System.out.println("CREATE BINARY TREE selected.");
+            break;
+
+        case EXIT:
+            System.out.println("Exiting system...");
+            break;
     }
 
     }
+       } while (choice != 6);
+
+        input.close(); //// here is to closing the Scanner after the loop ends
+    }
+}
