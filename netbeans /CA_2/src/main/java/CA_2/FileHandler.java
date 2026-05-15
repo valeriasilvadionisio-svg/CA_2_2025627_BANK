@@ -69,18 +69,66 @@ public class FileHandler {
     // This loop reads the file line by line until there are no more lines
     while (fileReader.hasNextLine()) {
 
-    // Storing one line from the file into a String variable
     String line = fileReader.nextLine();
-
-    // Displaying the line in the console
-    System.out.println(line);
-
-    // Increasing the counter each time a new line is read
-    recordCount++;
+    
+    // Skipping the header line because it contains column names, not employee data
+    if (line.startsWith("First name")) {
+    continue;
 }
 
-    // show the total number of records read
-    System.out.println("Total records loaded: " + recordCount);
+    // This checks if the line is not empty before counting it as a record
+    //because i put before and the file count was 48 records, was counting spaces 
+    if (!line.trim().isEmpty()) {
+
+    // Displaying the valid line in the console
+    System.out.println(line);
+    
+    // Splitting the line using comma because the file is in CSV format
+    String[] data = line.split(",");
+
+     // Checking if the line has the expected number of columns before using it
+    if (data.length >= 9) {
+
+    // Storing each column in a variable to make the code easier to understand
+    String firstName = data[0];
+    String lastName = data[1];
+    String gender = data[2];
+    String email = data[3];
+    double salary = Double.parseDouble(data[4]);
+    String department = data[5];
+    String position = data[6];
+    String jobTitle = data[7];
+    String company = data[8];
+    
+   // Creating the Employee object using the constructor
+Employee employee = new Employee(
+        recordCount,
+        firstName,
+        lastName,
+        gender,
+        email,
+        salary,
+        department,
+        position,
+        jobTitle,
+        company
+);
+    // Adding the Employee object to the ArrayList
+    employeeList.add(employee);
+
+    // Displaying only the full name to test if the split worked
+    System.out.println("Employee loaded: " + firstName + " " + lastName);
+}
+
+    // Increasing the counter only for valid lines
+    recordCount++;
+}
+}
+    
+    //-------------------------------//
+
+    System.out.println("Total records read from file: " + recordCount); //records read from file 
+    System.out.println("Total employee objects stored: " + employeeList.size()); //whats was stored 
     
  
     // Closing the Scanner after reading the file

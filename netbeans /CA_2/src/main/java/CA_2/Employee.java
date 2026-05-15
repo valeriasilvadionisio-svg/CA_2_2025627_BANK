@@ -46,4 +46,37 @@ public class Employee {
     private String company;
     
     
+ 
+ //Empty constructor. This allows child classes to inherit from Employee without needing
+ //to pass all employee information immediately.
+
+
+public Employee() {
+
+}
+    
+    
+    
+    
+    
+    //This constructor receives the employee information and stores the values inside the Employee object. (when read in the ca_2)
+
+public Employee(int employeeId, String firstName, String lastName,
+        String gender, String email, double salary,
+        String department, String position,
+        String jobTitle, String company) {
+
+    this.employeeId = employeeId;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.gender = gender;
+    this.email = email;
+    this.salary = salary;
+    this.department = department;
+    this.position = position;
+    this.jobTitle = jobTitle;
+    this.company = company;
+
+}
+    
 }
