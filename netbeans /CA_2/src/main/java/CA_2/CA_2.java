@@ -108,9 +108,12 @@ public class CA_2 {
               //Now the READ FILE menu option is connected to the FileHandler class. 
               //when the user selects option 1, the program calls the readFile and starts the file handling process.
 
-        case SORT:
+           case SORT:
             System.out.println("SORT selected.");
-            break;
+
+            // Calling the sortEmployees method from the FileHandler class
+            fileHandler.sortEmployees();
+              break;
 
         case SEARCH:
             System.out.println("SEARCH selected.");
