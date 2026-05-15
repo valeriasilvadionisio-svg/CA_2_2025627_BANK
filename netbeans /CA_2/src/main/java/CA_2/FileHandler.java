@@ -37,13 +37,7 @@ public class FileHandler {
         }
      
       //This method will later read employee records from the file.
-      //now  I am only creating the method structure first before adding the full file reading logic.
-     
-     
-     
-     
-     
-     
+  
      public void readFile() {
 
     // Try-catch i used to avoid the program crashing if the file does not exist
@@ -124,8 +118,6 @@ Employee employee = new Employee(
     recordCount++;
 }
 }
-    
-    //-------------------------------//
 
     System.out.println("Total records read from file: " + recordCount); //records read from file 
     System.out.println("Total employee objects stored: " + employeeList.size()); //whats was stored 
@@ -143,58 +135,8 @@ Employee employee = new Employee(
 
 }
 
-     //=======================================//
-     
-     //HERE I CREATED THE SORT METHOD//
-     
-     //This method will sort employee names alphabetically and display only the first 20 employees.
-
-public void sortEmployees() {
-
-    // Calling the recursive bubble sort method
-    recursiveBubbleSort(employeeList.size());
-
-    System.out.println("\n===== FIRST 20 SORTED EMPLOYEES =====");
-
-    // Displaying only the first 20 employees
-    for (int i = 0; i < 20 && i < employeeList.size(); i++) {
-
-        System.out.println(employeeList.get(i));
-    }
-}
-
-//This method uses recursion to sort the employee list.
-//The value n represents how many employees still need to be checked.
-
-//The program first reads the employee records from the file and stores them inside an ArrayList. 
-//After selecting the SORT option, the system uses a recursive bubble sort algorithm to compare employee names alphabetically and organise them in order. 
-//Finally, the program displays only the first 20 sorted employees, as required in the assignment brief.
-
-
-private void recursiveBubbleSort(int n) {
-
-    // Base case: if n is 1, the list is already sorted
-    if (n == 1) {
-        return;
-    }
-
-    // This loop compares employees next to each other
-    for (int i = 0; i < n - 1; i++) {
-
-        // Comparing employee full names alphabetically
-        if (employeeList.get(i).getFullName()
-                .compareToIgnoreCase(employeeList.get(i + 1).getFullName()) > 0) {
-
-            // Swapping employees if they are in the wrong order
-            Employee temp = employeeList.get(i);
-            employeeList.set(i, employeeList.get(i + 1));
-            employeeList.set(i + 1, temp);
-        }
-    }
-
-    // Recursive call: sort the list again, but ignoring the last sorted item
-    recursiveBubbleSort(n - 1);
-}
-     
-     
+// This method allows other classes to access the employee list
+public ArrayList<Employee> getEmployeeList() {
+    return employeeList;
+}     
 }

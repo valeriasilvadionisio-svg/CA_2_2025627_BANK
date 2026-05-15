@@ -33,6 +33,12 @@ public class CA_2 {
         
         // Creating the FileHandler object
         FileHandler fileHandler = new FileHandler();
+        
+        // Creating the SortHandler object
+        SortHandler sortHandler = new SortHandler();
+        
+        // Creating the SearchHandler object
+        SearchHandler searchHandler = new SearchHandler();
 
         // This variable stores the number chosen by the user from the menu
         int choice;
@@ -109,15 +115,25 @@ public class CA_2 {
               //when the user selects option 1, the program calls the readFile and starts the file handling process.
 
            case SORT:
-            System.out.println("SORT selected.");
+           System.out.println("SORT selected.");
 
-            // Calling the sortEmployees method from the FileHandler class
-            fileHandler.sortEmployees();
-              break;
+           // Calling the sort method from SortHandler
+           sortHandler.sortEmployees(fileHandler.getEmployeeList());
+           break;
 
         case SEARCH:
-            System.out.println("SEARCH selected.");
-            break;
+        System.out.println("SEARCH selected.");
+
+         // Clear the scanner buffer before reading text
+         input.nextLine();
+
+        // Asking the user to type the employee full name
+        System.out.print("Enter employee full name: ");
+        String searchName = input.nextLine();
+
+        // Calling the search method from SearchHandler
+        searchHandler.searchEmployee(fileHandler.getEmployeeList(), searchName);
+        break;
 
         case ADD_RECORD:
             System.out.println("ADD RECORD selected.");
