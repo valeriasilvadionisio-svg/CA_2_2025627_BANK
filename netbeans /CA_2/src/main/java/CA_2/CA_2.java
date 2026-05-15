@@ -39,6 +39,9 @@ public class CA_2 {
         
         // Creating the SearchHandler object
         SearchHandler searchHandler = new SearchHandler();
+        
+        // Creating the AddHandler object
+        AddHandler addHandler = new AddHandler();
 
         // This variable stores the number chosen by the user from the menu
         int choice;
@@ -135,9 +138,12 @@ public class CA_2 {
         searchHandler.searchEmployee(fileHandler.getEmployeeList(), searchName);
         break;
 
-        case ADD_RECORD:
-            System.out.println("ADD RECORD selected.");
-            break;
+       case ADD_RECORD:
+       System.out.println("ADD RECORD selected.");
+
+       // Calling the addEmployee method from AddHandler
+      addHandler.addEmployee(fileHandler.getEmployeeList(), input);
+      break;
 
         case CREATE_BINARY_TREE:
             System.out.println("CREATE BINARY TREE selected.");
