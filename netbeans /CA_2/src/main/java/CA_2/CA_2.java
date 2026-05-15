@@ -42,6 +42,9 @@ public class CA_2 {
         
         // Creating the AddHandler object
         AddHandler addHandler = new AddHandler();
+        
+        // Creating the TreeMain object
+        TreeMain treeMain = new TreeMain();
 
         // This variable stores the number chosen by the user from the menu
         int choice;
@@ -146,8 +149,11 @@ public class CA_2 {
       break;
 
         case CREATE_BINARY_TREE:
-            System.out.println("CREATE BINARY TREE selected.");
-            break;
+        System.out.println("CREATE BINARY TREE selected.");
+
+        // Calling the createTree method from TreeMain
+        treeMain.createTree(fileHandler.getEmployeeList());
+        break;
 
         case EXIT:
             System.out.println("Exiting system...");
