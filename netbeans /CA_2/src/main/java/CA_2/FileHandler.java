@@ -12,6 +12,9 @@ package CA_2;
 import java.util.ArrayList; //An ArrayList is useful because its size can grow automatically as new employee records are added. 
 //This is better than using a normal array with a fixed size, because the program may need to store more employees later.
 
+import java.io.File; //to opem file
+import java.io.FileNotFoundException; //to correct the error if the file not exist 
+import java.util.Scanner; //read line by line 
 
 //This class will be responsible for reading employee records from the file.
 // I am keeping this separate from CA_2 because CA_2 is the main class and should focus on running the menu.
@@ -36,9 +39,59 @@ public class FileHandler {
       //This method will later read employee records from the file.
       //now  I am only creating the method structure first before adding the full file reading logic.
      
+     
+     
+     
+     
+     
      public void readFile() {
 
-    System.out.println("Reading employee file");
+    // Try-catch i used to avoid the program crashing if the file does not exist
+    try {
+
+    // to creating the File object
+    File employeeFile = new File("Applicants_Form - Sample data file for read.txt"); //the same name is in the file, so the "read file" can open 
+
+    // Scanner used to read the file
+    Scanner fileReader = new Scanner(employeeFile);
+
+    System.out.println("File opened successfully.");
+    
+    
+   //-----------------------------------------------------//
+
+//in this part the code will read the file / read line by line/ show in the terminal / count how many lines exists
+
+    
+    // Variable used to count how many records were read from the file
+    int recordCount = 0;
+
+    // This loop reads the file line by line until there are no more lines
+    while (fileReader.hasNextLine()) {
+
+    // Storing one line from the file into a String variable
+    String line = fileReader.nextLine();
+
+    // Displaying the line in the console
+    System.out.println(line);
+
+    // Increasing the counter each time a new line is read
+    recordCount++;
+}
+
+    // show the total number of records read
+    System.out.println("Total records loaded: " + recordCount);
+    
+ 
+    // Closing the Scanner after reading the file
+    fileReader.close();
+
+} catch (FileNotFoundException e) {
+
+    // Error message if the file cannot be found
+    System.out.println("File not found.");
+
+}
 
 }
     
