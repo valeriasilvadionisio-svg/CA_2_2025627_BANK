@@ -30,6 +30,9 @@ public class CA_2 {
 
         // Scanner used to read user input
         Scanner input = new Scanner(System.in);
+        
+        // Creating the FileHandler object
+        FileHandler fileHandler = new FileHandler();
 
         // This variable stores the number chosen by the user from the menu
         int choice;
@@ -93,11 +96,17 @@ public class CA_2 {
 
                 // This switch uses the enum option to decide what the program should do
                 if (selectedOption != null) {
+                    
                  switch (selectedOption) {
        
-                     case READ_FILE:
-            System.out.println("READ FILE selected.");
-            break;
+           //Calling the readFile method from the FileHandler class when the user selects the READ FILE option          
+           case READ_FILE:
+             System.out.println("READ FILE selected.");
+             fileHandler.readFile();
+              break;
+              
+              //Now the READ FILE menu option is connected to the FileHandler class. 
+              //when the user selects option 1, the program calls the readFile and starts the file handling process.
 
         case SORT:
             System.out.println("SORT selected.");
