@@ -52,33 +52,41 @@ public class TreeMain {
     
     //In this part, I am adding employee records into the binary tree structure. 
     //The first employee becomes the root node of the tree, 
-    //and the next employees are inserted into the left and right sides of the tree using a simple level order insertion approach.
-    //I created separate methods to keep the code more organised and easier to understand.
-  
+    // It checks the tree from top to bottom and fills the left side first,
+    // then the right side, as requested in the brief.
     
-    // This method inserts employees into the tree in a simple level-order way
     private void insertLevelOrder(Employee employee) {
 
+    // Creating a new node for the employee
     TreeBinary newNode = new TreeBinary(employee);
 
-    if (root.left == null) {
-        root.left = newNode;
-    } else if (root.right == null) {
-        root.right = newNode;
-    } else {
-        insertLevelOrder(root.left, newNode);
-    }
-}
+    // This ArrayList will work like a simple queue
+    ArrayList<TreeBinary> queue = new ArrayList<>();
 
-    // to help to used to continue inserting nodes into the tree
-    private void insertLevelOrder(TreeBinary current, TreeBinary newNode) {
+    // Start checking from the root
+    queue.add(root);
 
-    if (current.left == null) {
-        current.left = newNode;
-    } else if (current.right == null) {
-        current.right = newNode;
-    } else {
-        insertLevelOrder(current.left, newNode);
+    // Keep checking until we find an empty place for the new node
+    while (!queue.isEmpty()) {
+
+        // Remove the first node from the queue
+        TreeBinary current = queue.remove(0);
+
+        // Fill the left child first
+        if (current.left == null) {
+            current.left = newNode;
+            return;
+        } else {
+            queue.add(current.left);
+        }
+
+        // If the left side is already filled, try the right child
+        if (current.right == null) {
+            current.right = newNode;
+            return;
+        } else {
+            queue.add(current.right);
+        }
     }
 }
     
@@ -135,7 +143,8 @@ public int treeHeight(TreeBinary node) {
         TreeBinary current = queue.remove(0);
 
         // Display the employee stored in the current node
-        System.out.println(current.employee.getFullName());
+       System.out.println("Name: " + current.employee.getFullName() + " | Manager Type: " + current.employee.getPosition()
+        + " | Department: " + current.employee.getDepartment());
 
         // If the current node has a left child, add it to the queue
         if (current.left != null) {
