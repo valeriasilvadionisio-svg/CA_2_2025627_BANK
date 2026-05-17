@@ -18,6 +18,9 @@ public class SearchHandler {
 // To searches for an employee by full name using recursive binary search.
 
     public void searchEmployee(ArrayList<Employee> employeeList, String searchName) {
+        
+        // Removing extra spaces typed by the user
+        searchName = searchName.trim();  
 
     // Starting the recursive binary search
     int result = recursiveBinarySearch(
@@ -70,7 +73,7 @@ public class SearchHandler {
     int middle = (left + right) / 2;
 
     // Getting the employee name from the middle position
-    String middleName = employeeList.get(middle).getFullName();
+    String middleName = employeeList.get(middle).getFullName().trim();
 
     // Comparing the search name with the middle employee name
     int comparison = searchName.compareToIgnoreCase(middleName);

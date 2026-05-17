@@ -33,12 +33,11 @@ private ArrayList<Employee> newEmployees = new ArrayList<>();
         firstName = input.nextLine();
 
         // Validation message if the field is empty
-        if (firstName.trim().isEmpty()) {
+        if (firstName.trim().isEmpty() || !firstName.matches("[a-zA-Z ]+")) {
+        System.out.println("First name must contain letters only.");
+}
 
-        System.out.println("First name cannot be empty.");
-    }
-
-     } while (firstName.trim().isEmpty());
+     } while (firstName.trim().isEmpty() || !firstName.matches("[a-zA-Z ]+"));
         
          String lastName;
 
@@ -49,19 +48,32 @@ private ArrayList<Employee> newEmployees = new ArrayList<>();
         lastName = input.nextLine();
 
         // Validation message if the field is empty
-        if (lastName.trim().isEmpty()) {
+        if (lastName.trim().isEmpty() || !lastName.matches("[a-zA-Z ]+")) {
+        System.out.println("Last name must contain letters only.");
+}
+       
 
-        System.out.println("Last name cannot be empty.");
     }
-
-     } while (lastName.trim().isEmpty());
+       while (lastName.trim().isEmpty() || !lastName.matches("[a-zA-Z ]+"));
 
         System.out.print("Enter gender: ");
         String gender = input.nextLine();
 
-        System.out.print("Enter email: ");
-        String email = input.nextLine();
+       String email;
 
+      do {
+        System.out.print("Enter email: ");
+        email = input.nextLine();
+
+      if (!email.contains("@") || !email.contains(".")) {
+        System.out.println("Invalid email. Please enter a valid email address.");
+    }
+
+     }
+      while (!email.contains("@") || !email.contains("."));
+        
+        
+  
         double salary;
 
        // This loop keeps asking until the user enters a valid salary
