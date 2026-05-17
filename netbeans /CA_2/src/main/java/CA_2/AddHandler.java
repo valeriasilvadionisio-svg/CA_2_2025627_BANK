@@ -14,6 +14,9 @@ import java.util.Scanner;
 //This class is responsible only for adding a new employee record.
 
 public class AddHandler  {
+    
+// This list stores only the new employee records added by the user
+private ArrayList<Employee> newEmployees = new ArrayList<>();
 
     // here to adds a new employee to the employee list
     public void addEmployee(ArrayList<Employee> employeeList, Scanner input) {
@@ -83,13 +86,81 @@ public class AddHandler  {
     }
 }
 
-        input.nextLine();
+      //----------------------//
+      
+      String department;
 
-        System.out.print("Enter department: ");
-        String department = input.nextLine();
+      // here to asks the user to choose an existing department.
+      // Using fixed options helps validate the input correctly.
+       do {
+           
 
-        System.out.print("Enter position: ");
-        String position = input.nextLine();
+            System.out.println("Choose department:");
+            System.out.println("1. Finance");
+            System.out.println("2. IT");
+            System.out.println("3. HR");
+            System.out.print("Enter option: ");
+
+    department = input.nextLine();
+
+    // If the user selects option 1, the department will be Finance
+    if (department.equals("1")) {
+
+        department = "Finance";
+
+    //same here 
+    } else if (department.equals("2")) {
+
+        department = "IT";
+
+    // same here 
+    } else if (department.equals("3")) {
+
+        department = "HR";
+
+    } else {
+
+        System.out.println("Invalid department. Please try again.");
+        department = "";
+    }
+
+} while (department.isEmpty());
+
+        
+      //------------------------------------------------//
+        
+        String position;
+
+     // here to asks the user to choose a manager type from the valid options.
+     // I am using numbers instead of free text to avoid spelling mistakes
+     // and to make sure the selected manager type exists in the system.
+
+         do {
+     
+            System.out.println("Choose manager type:");
+            System.out.println("1. Head Manager");
+            System.out.println("2. Assistant Manager");
+            System.out.println("3. Team Leader");
+            System.out.print("Enter option: ");
+
+        position = input.nextLine();
+
+    
+     // If the user selects option 1, the manager type will be Head Manager
+     
+     if (position.equals("1")) {
+        position = "Head Manager";
+    } else if (position.equals("2")) {
+        position = "Assistant Manager";
+    } else if (position.equals("3")) {
+        position = "Team Leader";
+    } else {
+        System.out.println("Invalid manager type. Please try again.");
+        position = "";
+    }
+
+} while (position.isEmpty());
+       
 
         System.out.print("Enter job title: ");
         String jobTitle = input.nextLine();
@@ -116,8 +187,17 @@ public class AddHandler  {
 
         // Adding the new employee to the list
         employeeList.add(newEmployee);
+        
+        // Storing the new employee separately
+        newEmployees.add(newEmployee);
+
 
         System.out.println("Employee added successfully:");
-        System.out.println(newEmployee);
+        
+        System.out.println("\n===== NEW EMPLOYEE RECORDS =====");
+
+        for (Employee newEmployeeRecord : newEmployees) {
+        System.out.println(newEmployeeRecord);
+}
     }
 }
